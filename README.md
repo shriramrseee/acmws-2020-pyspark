@@ -3,7 +3,9 @@ Repository for *PySpark* Lab Session at ACM Winter School - 2020
 
 ## Prerequisite
 
-Login to the IISc cluster (**10.24.24.2**) using SSH. Windows users can use Putty. Please use the username allocated for you in the following google sheet: [https://docs.google.com/spreadsheets/d/1CMKjWcLXCFOsa-kCa8KoplGjQDjKFRhpjoWYoKJAc5I/edit?usp=sharing]
+Login to the IISc cluster (**10.24.24.2**) using SSH. Windows users can use Putty. Please use the username allocated for you in the following google sheet:
+
+https://docs.google.com/spreadsheets/d/1CMKjWcLXCFOsa-kCa8KoplGjQDjKFRhpjoWYoKJAc5I/edit?usp=sharing
 
 The password is **acmws@iisc**
 
