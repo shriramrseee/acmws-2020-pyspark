@@ -3,7 +3,9 @@ Repository for *PySpark* Lab Session at ACM Winter School - 2020
 
 ## Prerequisite
 
-Login to the IISc cluster (**10.24.24.2**) using SSH. Windows users can use Putty. Please use the username allocated for you in the following google sheet: The password is **acmws@iisc**
+Login to the IISc cluster (**10.24.24.2**) using SSH. Windows users can use Putty. Please use the username allocated for you in the following google sheet: [https://docs.google.com/spreadsheets/d/1CMKjWcLXCFOsa-kCa8KoplGjQDjKFRhpjoWYoKJAc5I/edit?usp=sharing]
+
+The password is **acmws@iisc**
 
 ## Task 1 - Cluster Information
 
@@ -28,7 +30,7 @@ hdfs dfs -head /ml/small/links.csv
 
 Once logged into the cluster, run the following command:
 ```
-pyspark --master yarn --deploy-mode client --conf spark.yarn.archive=hdfs:///spark-libs.jar --num-executors 2 --executor-cores 3 --executor-memory 2g
+pyspark --master yarn --deploy-mode client --conf spark.yarn.archive=hdfs:///spark-libs.jar --num-executors 2 --executor-cores 1 --executor-memory 2g
 ```
 and you should get an output similar to the following,
 ```
