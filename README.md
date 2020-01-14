@@ -32,7 +32,7 @@ hdfs dfs -head /ml/small/links.csv
 
 Once logged into the cluster, run the following command:
 ```
-pyspark --master yarn --deploy-mode client --conf spark.yarn.archive=hdfs:///spark-libs.jar --num-executors 1 --executor-cores 2 --executor-memory 2g
+pyspark --master yarn --deploy-mode client --conf spark.ui.port=5001 spark.yarn.archive=hdfs:///spark-libs.jar --num-executors 1 --executor-cores 2 --executor-memory 2g
 ```
 and you should get an output similar to the following,
 ```
@@ -103,7 +103,7 @@ print mc, mcm
 ## Task 8 - Which are the genres with the most and least number of movies?
 ```
 mp = m.map(lambda l: tuple(unicode_csv_reader([l,]))[0])
-mgs = mg.flatMap(lambda l : l[2].split("|")).map(lambda g : (g, 1)).reduceByKey(lambda a, b: a + b)
+mgs = mp.flatMap(lambda l : l[2].split("|")).map(lambda g : (g, 1)).reduceByKey(lambda a, b: a + b)
 msg = mgs.map(lambda (g,s) : (s,g))
 gmin = msg.min()
 gmax = msg.max()
