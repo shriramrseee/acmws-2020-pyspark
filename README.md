@@ -3,7 +3,7 @@ Repository for Pyspark Lab Session at ACM Winter School - 2020
 
 ## Prerequisite
 
-Login to the IISc cluster (10.24.24.2) using SSH. Windows users can use Putty. Please use the username allocated for you in the following google sheet: The password is **acmws@iisc**
+Login to the IISc cluster (**10.24.24.2**) using SSH. Windows users can use Putty. Please use the username allocated for you in the following google sheet: The password is **acmws@iisc**
 
 ## Task 1 - Cluster Information
 
@@ -57,7 +57,7 @@ Enter the following statements in *Pyspark* terminal to read and cache the datse
 ```
 m = sc.textFile("hdfs:///ml/small/movies.csv").cache()
 r = sc.textFile("hdfs:///ml/small/ratings.csv").cache()
-t = sc.textFile("hdfs:////ml/small/tags.csv").cache()
+t = sc.textFile("hdfs:///ml/small/tags.csv").cache()
 l = sc.textFile("hdfs:///ml/small/links.csv").cache()
 ```
 
