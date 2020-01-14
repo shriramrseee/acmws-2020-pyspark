@@ -1,5 +1,5 @@
 # acmws-2020-pyspark
-Repository for Pyspark Lab Session at ACM Winter School - 2020
+Repository for *Pyspark* Lab Session at ACM Winter School - 2020
 
 ## Prerequisite
 
@@ -55,10 +55,10 @@ SparkSession available as 'spark'.
 
 Enter the following statements in *Pyspark* terminal to read and cache the datset in memory,
 ```
-m = sc.textFile("hdfs:///ml/small/movies.csv").cache()
-r = sc.textFile("hdfs:///ml/small/ratings.csv").cache()
-t = sc.textFile("hdfs:///ml/small/tags.csv").cache()
-l = sc.textFile("hdfs:///ml/small/links.csv").cache()
+m = sc.textFile("hdfs:///ml/full/movies.csv").cache()
+r = sc.textFile("hdfs:///ml/full/ratings.csv").cache()
+t = sc.textFile("hdfs:///ml/full/tags.csv").cache()
+l = sc.textFile("hdfs:///ml/full/links.csv").cache()
 ```
 
 ## Task 5 - How many distinct users have tagged movies? 
@@ -86,5 +86,5 @@ Exit the *Pyspark* terminal by entering `quit()`.
 ## References
 
 1. https://spark.apache.org/docs/2.4.0/rdd-programming-guide.html
-2. http://spark.apache.org/docs/2.1.1/api/python/pyspark.html
+2. http://spark.apache.org/docs/2.4.0/api/python/pyspark.html
 3. http://files.grouplens.org/datasets/movielens/ml-latest-README.html,
