@@ -32,7 +32,7 @@ hdfs dfs -head /ml/small/links.csv
 
 Once logged into the cluster, run the following command:
 ```
-pyspark --master yarn --deploy-mode client --conf spark.yarn.archive=hdfs:///spark-libs.jar --num-executors 2 --executor-cores 1 --executor-memory 2g
+pyspark --master yarn --deploy-mode client --conf spark.yarn.archive=hdfs:///spark-libs.jar --num-executors 1 --executor-cores 2 --executor-memory 2g
 ```
 and you should get an output similar to the following,
 ```
@@ -67,22 +67,48 @@ l = sc.textFile("hdfs:///ml/full/links.csv").cache()
 
 ## Task 5 - How many distinct users have tagged movies? 
 ```
-Will be added during lab session.
+tu = t.map(lambda l : l.split(",")[0]).distinct()
+print 'Number of Users: ', tu.count()-1
 ```
 
 ## Task 6 - How many users have both given ratings and tagged movies?
 ```
-Will be added during lab session.
+ru = r.map(lambda l : l.split(",")[0]).distinct()
+print 'Number of Users: ', tu.intersection(ru).count() - 1
 ```
 
 ## Task 7 - What are the most number of genres assigned to any movie?
 ```
-Will be added during lab session.
+# Unicode reader
+# Reference: https://docs.python.org/2/library/csv.html#examples
+import csv
+
+def unicode_csv_reader(unicode_csv_data, dialect=csv.excel, **kwargs):
+    csv_reader = csv.reader(utf_8_encoder(unicode_csv_data), dialect=dialect, **kwargs)
+    for row in csv_reader:
+        yield [unicode(cell, 'utf-8') for cell in row]
+
+def utf_8_encoder(unicode_csv_data):
+    for line in unicode_csv_data:
+        yield line.encode('utf-8')
+
+mp = m.map(lambda l: tuple(unicode_csv_reader([l,]))[0])
+mp = mp.filter(lambda l: l[0] != u'movieId').map(lambda l: (len(l[2].split('|')), l))
+mc = mp.map(lambda l: l[0]).max()
+mcm = mp.lookup(mc)
+print mc, mcm
 ```
+
 
 ## Task 8 - Which are the genres with the most and least number of movies?
 ```
-Will be added during lab session.
+mp = m.map(lambda l: tuple(unicode_csv_reader([l,]))[0])
+mgs = mg.flatMap(lambda l : l[2].split("|")).map(lambda g : (g, 1)).reduceByKey(lambda a, b: a + b) 	# genre, sums
+msg = mgs.map(lambda (g,s) : (s,g))
+gmin = msg.min()
+gmax = msg.max()
+print 'Genre with min films is',gmin[1],'with count',gmin[0]
+print 'Genre with max films is',gmax[1],'with count',gmax[0]
 ```
 
 Exit the *PySpark* terminal by entering `quit()`. 
