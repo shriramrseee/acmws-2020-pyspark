@@ -1,5 +1,5 @@
 # acmws-2020-pyspark
-Repository for *Pyspark* Lab Session at ACM Winter School - 2020
+Repository for *PySpark* Lab Session at ACM Winter School - 2020
 
 ## Prerequisite
 
@@ -24,7 +24,7 @@ hdfs dfs -head /ml/small/tags.csv
 hdfs dfs -head /ml/small/links.csv
 ```
 
-## Task 3 - Launching Pyspark
+## Task 3 - Launching PySpark
 
 Once logged into the cluster, run the following command:
 ```
@@ -53,7 +53,7 @@ SparkSession available as 'spark'.
 
 ## Task 4 - Caching dataset in Spark
 
-Enter the following statements in *Pyspark* terminal to read and cache the datset in memory,
+Enter the following statements in *PySpark* terminal to read and cache the datset in memory,
 ```
 m = sc.textFile("hdfs:///ml/full/movies.csv").cache()
 r = sc.textFile("hdfs:///ml/full/ratings.csv").cache()
@@ -81,7 +81,7 @@ Will be added during lab session.
 Will be added during lab session.
 ```
 
-Exit the *Pyspark* terminal by entering `quit()`. 
+Exit the *PySpark* terminal by entering `quit()`. 
 
 ## References
 
