@@ -41,7 +41,6 @@ print mc, mcm
 #####################################################################################
 # Which are the genres with the most and least number of movies?
 
-
 mp = m.map(lambda l: tuple(unicode_csv_reader([l,]))[0])
 mgs = mp.flatMap(lambda l : l[2].split("|")).map(lambda g : (g, 1)).reduceByKey(lambda a, b: a + b)
 msg = mgs.map(lambda (g,s) : (s,g))
