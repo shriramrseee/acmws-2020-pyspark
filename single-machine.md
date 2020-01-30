@@ -5,18 +5,20 @@ t = sc.textFile("hdfs:///user/simmhan/ml/small/tags.csv").cache()
 l = sc.textFile("hdfs:///user/simmhan/ml/small/links.csv").cache()
 
 #####################################################################################
-
+# How many distinct users have tagged movies? 
 
 tu = t.map(lambda l : l.split(",")[0]).distinct()
 print 'Number of Users: ', tu.count()-1
 
 #####################################################################################
-
+# How many users have both given ratings and tagged movies?
 
 ru = r.map(lambda l : l.split(",")[0]).distinct()
 print 'Number of Users: ', tu.intersection(ru).count() - 1
 
 #####################################################################################
+# What are the most number of genres assigned to any movie?
+
 # Unicode reader
 # Reference: https://docs.python.org/2/library/csv.html#examples
 import csv
@@ -37,6 +39,8 @@ mcm = mp.lookup(mc)
 print mc, mcm
 
 #####################################################################################
+# Which are the genres with the most and least number of movies?
+
 
 mp = m.map(lambda l: tuple(unicode_csv_reader([l,]))[0])
 mgs = mp.flatMap(lambda l : l[2].split("|")).map(lambda g : (g, 1)).reduceByKey(lambda a, b: a + b)
