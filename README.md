@@ -1,4 +1,7 @@
 ```
+from pyspark import SparkContext, SparkConf
+sc = SparkContext.getOrCreate()
+
 m = sc.textFile("hdfs:///user/simmhan/ml/small/movies.csv").cache()
 r = sc.textFile("hdfs:///user/simmhan/ml/small/ratings.csv").cache()
 t = sc.textFile("hdfs:///user/simmhan/ml/small/tags.csv").cache()
