@@ -1,3 +1,4 @@
+```
 m = sc.textFile("hdfs:///user/simmhan/ml/small/movies.csv").cache()
 r = sc.textFile("hdfs:///user/simmhan/ml/small/ratings.csv").cache()
 t = sc.textFile("hdfs:///user/simmhan/ml/small/tags.csv").cache()
@@ -48,3 +49,4 @@ gmin = msg.min()
 gmax = msg.max()
 print 'Genre with min films is',gmin[1],'with count',gmin[0]
 print 'Genre with max films is',gmax[1],'with count',gmax[0]
+```
